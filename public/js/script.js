@@ -20,7 +20,7 @@ form.addEventListener("submit", async function(e) {
         } catch (error){
             console.error("Error: " + error.message);
             output.innerText = "Not found";
-            skinimage.src = "error.png";
+            skinimage.src = "images/error.png";
             alert("Player with this username doesnt exist");
         }
     }
