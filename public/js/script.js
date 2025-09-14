@@ -7,7 +7,7 @@ form.addEventListener("submit", async function(e) {
     const username = document.getElementById("username").value.trim();
     if(username !== "") {
         try {
-            const response = await fetch(`http://localhost:3000/mc/${username}`)
+            const response = await fetch(`/mc/${username}`)
             const data = await response.json();
 
             if(!response.ok) {
