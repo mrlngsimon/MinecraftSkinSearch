@@ -20,6 +20,8 @@ body {
 
 h1 {
     font-size: 3em;
+    text-align: center;
+    word-break: break-word;
 }
 
 h3 {
@@ -33,10 +35,11 @@ h3 {
     border: none;
     outline: none;
     font-size: 2em;
-
-    /* background-color: rgb(206, 213, 255); */
-    /* border: 2px solid black; */
     border-radius: 5px;
+    padding: 0.5em 1em;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
 }
 
 #username::placeholder {
@@ -45,6 +48,10 @@ h3 {
 
 #skinimage {
     height: 500px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
 }
 
 #search {
@@ -67,9 +74,34 @@ h3 {
 
 #searchbar {
     border: 2px solid black;
-    
-    padding: 10px;
+    padding: 4px 8px;
     border-radius: 15px;
-
     display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
+    align-items: center;
+}
+/* Responsive styles for phones */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    #skinimage {
+        max-width: 60vw;
+        height: auto;
+    }
+    #searchbar {
+        max-width: 95vw;
+        padding: 0.5em 0.2em;
+    }
+    #username {
+        font-size: 1em;
+        max-width: 95vw;
+    }
+    body {
+        padding: 0.5em;
+    }
 }
