@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>API</title>
+</head>
+<body>
+    <h1><span style="background-color: #83ff94;padding: 5px; border-radius: 5px;">Minecraft</span> skin search</h1>
+    <form action="getuuid" id="getuuid">
+        <div id="searchbar">
+            <input type="text" id="username" placeholder="Enter Minecraft nickname">
+            <button type="submit" id="search">
+                <img src="loupe.png" alt="Loupe">
+            </button>
+        </div>
+    </form>
+
+    <div class="uuidoutput">
+
+        <h3>UUID: </h2>
+        <span id="output"></span>
+    </div>
+    <img src="steve.png" alt="Minecraft Skin" id="skinimage">
+    
+</body>
+</html>
