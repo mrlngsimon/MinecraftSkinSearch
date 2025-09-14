@@ -1,13 +1,19 @@
 import express from "express";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 app.get("/", (req, res) => {
-    res.send("Sa neposer")
+    res.send("Nothing's here")
 });
 
 
@@ -15,7 +21,7 @@ app.get("/mc/:name", async(req, res) => {
     const username = req.params.name;
 
     try {
-        const uuidResponse = await fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`);
+        const uuidResponse = await fetch(`https://api.mojang.com/users/profiles/minecraft/${encodeURIComponent(username)}`);
         if(!uuidResponse.ok) throw new Error("Player not found!");
 
         const uuidData = await uuidResponse.json();
@@ -27,7 +33,8 @@ app.get("/mc/:name", async(req, res) => {
         
 
         const base64skinValue = skinResponseJSON.properties.find(p => p.name === "textures").value;
-        const skinData = JSON.parse(atob(base64skinValue));
+        const decoded = Buffer.from(base64skinValue, "base64").toString("utf8");
+        const skinData = JSON.parse(decoded);
         console.log("Got skin Data!" + "\n");
 
         res.json({ uuid: uuidData.id, url: skinData.textures.SKIN.url });
