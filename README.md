@@ -19,4 +19,4 @@ A small web app to search Minecraft usernames and view their current skins using
 npm install
 
 # start dev server
-npm run dev
+npm start
